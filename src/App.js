@@ -59,7 +59,7 @@ class App extends Component {
         <div>
           {persons}
         </div>
-        <button onClick={this.togglePersonsHandler} className="nameButton">Change the values</button>
+        <button onClick={this.togglePersonsHandler} className="nameButton">{this.state.showPersons ? 'Hide' : 'Show'} People</button>
       </div>
     );
   }
