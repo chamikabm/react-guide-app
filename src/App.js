@@ -9,27 +9,30 @@ class App extends Component {
       { name: "Chamika", age : 29 },
       { name: "Max", age : 27 },
       { name: "Voje", age : 28 },
-    ]
+    ],
+    showPersons : true,
   };
 
-  nameChangeHandler = () => {
-    console.log("clicked!!");
+  togglePersonsHandler = () => {
+    const isShowing = this.state.showPersons;
     this.setState({
-      persons: [
-        { name: "Meru", age : 29 },
-        { name: "Max", age : 27 },
-        { name: "Voje", age : 29 }
-        ]}
-    );
+      showPersons: !isShowing
+    });
   };
 
   render() {
+
+    let persons = null;
+    if (this.state.showPersons) {
+      persons = this.state.persons.map((person, key) => <Person name={person.name} age={person.age} key={key}/>);
+    }
+
     return (
       <div className="App">
-        {
-          this.state.persons.map((person, key) => <Person name={person.name} age={person.age} key={key}/>)
-        }
-        <button onClick={this.nameChangeHandler} className="nameButton">Change the values</button>
+        <div>
+          {persons}
+        </div>
+        <button onClick={this.togglePersonsHandler} className="nameButton">Change the values</button>
       </div>
     );
   }
