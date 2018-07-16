@@ -20,11 +20,38 @@ class App extends Component {
     });
   };
 
-  render() {
+  nameChangeHandler = (event, personIndex) => {
+    const updatingPerson =  {...this.state.persons[personIndex]};
+    updatingPerson.name = event.target.value;
 
+    const persons = [...this.state.persons];
+    persons[personIndex] = updatingPerson;
+
+    this.setState({
+      persons
+    });
+  };
+
+  deletePersonHandler = (personIndex) => {
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({
+      persons
+    });
+  };
+
+  render() {
     let persons = null;
+
     if (this.state.showPersons) {
-      persons = this.state.persons.map((person, key) => <Person name={person.name} age={person.age} key={key}/>);
+      persons = this.state.persons.map((person, key) =>
+        <Person
+          name={person.name}
+          age={person.age}
+          key={key}
+          click={() => this.deletePersonHandler(key)}
+          changed={(event) => this.nameChangeHandler(event, key)}
+        />);
     }
 
     return (
