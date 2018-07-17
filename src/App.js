@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Components/Person'
 
 class App extends Component {
@@ -55,11 +55,13 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <div>
           {persons}
         </div>
-        <button onClick={this.togglePersonsHandler} className="nameButton">{this.state.showPersons ? 'Hide' : 'Show'} People</button>
+        <button onClick={this.togglePersonsHandler} className={classes.nameButton}>
+          {this.state.showPersons ? 'Hide' : 'Show'} People
+        </button>
       </div>
     );
   }
