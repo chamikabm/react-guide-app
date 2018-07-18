@@ -9,6 +9,9 @@ const cockpit = (props) =>
       className={classes.nameButton}>
       {props.showPersons ? 'Hide' : 'Show'} People
     </button>
+    <button onClick={props.login}>
+      LogIn
+    </button>
   </div>;
 
 export default cockpit;

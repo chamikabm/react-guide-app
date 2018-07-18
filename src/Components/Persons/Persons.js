@@ -4,6 +4,7 @@ import Person from './Person/Person';
 class Persons extends Component {
   constructor(props) {
     super(props);
+    this.lastPersonRef = React.createRef();
     console.log("[Persons - REACT-LIFE_CYCLE] constructor");
   }
 
@@ -41,8 +42,10 @@ class Persons extends Component {
         name={person.name}
         age={person.age}
         key={key}
+        position={key}
         click={() => this.props.clicked(key)}
         changed={(event) => this.props.changed(event, key)}
+        ref={this.lastPersonRef}
       />);
   };
 }
